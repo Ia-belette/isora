@@ -1,5 +1,6 @@
 ---
 import Card from "../components/Card.astro";
+import Genres from "../components/Genres.astro";
 import Grid from "../components/Grid.astro";
 import Layout from "../layouts/Layout.astro";
 import { XataClient } from "../xata";
@@ -20,10 +21,13 @@ const recentContents = await xata.db.contents.getPaginated({
     "xata.createdAt": "desc",
   },
 });
+
+const genres = await xata.db.genres.select(["id", "name"]).getAll();
 ---
 
 <Layout>
   <main class="container">
+    <Genres {genres} />
     <Grid>
       {
         recentContents.records.map((m) => {

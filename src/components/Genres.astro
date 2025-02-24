@@ -1,0 +1,32 @@
+---
+import type { RecordArray, SelectedPick } from "@xata.io/client";
+import type { GenresRecord } from "../xata";
+
+type Props = {
+  genres: RecordArray<SelectedPick<GenresRecord, ("name" | "id")[]>>;
+};
+
+const { genres } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<div>
+  <div class="flex flex-wrap gap-2 py-10">
+    <a
+      href={`/`}
+      class={`bg-[#0000000d] hover:bg-[#0000001a] rounded-full px-2 py-1 text-[14px] sm:text-[16px] md:text-[20px] font-medium ${decodeURIComponent(currentPath.split("/")[1]) === "" ? "bg-[#0000001a]" : "bg-[#0000000d]"}`}
+    >
+      Recently Added
+    </a>
+    {
+      genres.map((genre) => (
+        <a
+          href={`/genre/${genre.name}`}
+          class="bg-[#0000000d] hover:bg-[#0000001a] rounded-full px-2 py-1 text-[14px] sm:text-[16px] md:text-[20px] font-medium"
+        >
+          {genre.name || ""}
+        </a>
+      ))
+    }
+  </div>
+</div>
