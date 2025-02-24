@@ -19,6 +19,7 @@ export const GET: APIRoute = async (context) => {
     if (dailyRecommendation) {
         const movie = await xata.db.contents
             .filter("id", dailyRecommendation.movie)
+            .select(["id", "title", "poster_url"])
             .getFirst();
         if (movie) {
             return new Response(JSON.stringify(movie));
