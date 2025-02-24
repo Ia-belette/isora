@@ -1,0 +1,135 @@
+{
+  "id": "mig_cul6bfib13vulms9t2fg",
+  "checksum": "1:a2f67f76fa8d247c7badc3b866acb83135e12692d36ff6f9f2a3554227e82b81",
+  "operations": [
+    {
+      "addTable": {
+        "table": "contents"
+      }
+    },
+    {
+      "addTable": {
+        "table": "genres"
+      }
+    },
+    {
+      "addTable": {
+        "table": "content_genres"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "tmdb_id",
+          "type": "int"
+        },
+        "table": "contents"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "text"
+        },
+        "table": "contents"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "tagline",
+          "type": "text"
+        },
+        "table": "contents"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "overview",
+          "type": "text"
+        },
+        "table": "contents"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "release_date",
+          "type": "datetime"
+        },
+        "table": "contents"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "poster_url",
+          "type": "text"
+        },
+        "table": "contents"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "backdrop_url",
+          "type": "text"
+        },
+        "table": "contents"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "type",
+          "type": "text"
+        },
+        "table": "contents"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "genre_id",
+          "type": "int"
+        },
+        "table": "genres"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "name",
+          "type": "text"
+        },
+        "table": "genres"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "content",
+          "type": "link",
+          "link": {
+            "table": "contents"
+          }
+        },
+        "table": "content_genres"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "genre",
+          "type": "link",
+          "link": {
+            "table": "genres"
+          }
+        },
+        "table": "content_genres"
+      }
+    }
+  ]
+}
