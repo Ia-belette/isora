@@ -1,5 +1,12 @@
 ---
 import { Image } from "astro:assets";
+
+type Props = {
+  id: string;
+  posterUrl: string;
+  title: string;
+};
+
 const { id, posterUrl, title } = Astro.props;
 ---
 
