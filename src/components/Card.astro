@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+const { id, posterUrl, title } = Astro.props;
+---
+
+<div class="rounded-2xl hover:bg-[#0000000d]">
+  <a href={`/c/${id}`}>
+    <div>
+      <div class="w-full relative">
+        <Image
+          src={posterUrl || ""}
+          class="rounded-xl object-cover w-full h-full aspect-[2/3] shadow-xl"
+          alt={"Movie poster"}
+          loading="lazy"
+          inferSize
+        />
+      </div>
+      <div
+        class="line-clamp-1 mt-3 mb-1 px-2 text-[14px] sm:text-[16px] md:text-[20px] font-medium"
+      >
+        {title || ""}
+      </div>
+    </div>
+  </a>
+</div>
