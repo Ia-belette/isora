@@ -22,7 +22,10 @@ const currentPath = Astro.url.pathname;
       genres.map((genre) => (
         <a
           href={`/genre/${genre.name}`}
-          class="bg-[#0000000d] hover:bg-[#0000001a] rounded-full px-2 py-1 text-[14px] sm:text-[16px] md:text-[20px] font-medium"
+          class={`
+          bg-[#0000000d] hover:bg-[#0000001a] rounded-full px-2 py-1 text-[14px] sm:text-[16px] md:text-[20px] font-medium
+          ${decodeURIComponent(currentPath.split("/")[2]) === genre.name ? "bg-[#0000001a]" : "bg-[#0000000d]"}
+          `}
         >
           {genre.name || ""}
         </a>
