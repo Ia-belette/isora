@@ -5,3 +5,50 @@
     padding-inline: 1rem;
     max-width: 1500px;
 }
+
+.scrollbar-hide {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+
+lite-youtube {
+    max-width: unset !important;
+    width: 100% !important;
+}
+
+button {
+    cursor: pointer;
+}
+
+dialog[open] {
+    margin: auto;
+    border: none;
+    border-radius: 5px;
+    max-width: 90%;
+    width: 100%;
+    overflow: hidden;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+dialog[open]::backdrop {
+    background-color: rgba(0, 0, 0, .5);
+}
+
+dialog h3 {
+    margin: 0 0 20px;
+
+}
+
+.modal-body {
+    overflow-y: auto;
+}
