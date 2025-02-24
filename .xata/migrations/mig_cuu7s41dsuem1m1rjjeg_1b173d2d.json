@@ -1,0 +1,17 @@
+{
+  "id": "mig_cuu7s41dsuem1m1rjjeg",
+  "parentID": "mig_cul6bfib13vulms9t2fg",
+  "checksum": "1:1b173d2d1209c376c797be4d807293951803f3b6cf52cf221d20405505b29556",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "recommendation_count",
+          "type": "int",
+          "defaultValue": "0"
+        },
+        "table": "contents"
+      }
+    }
+  ]
+}

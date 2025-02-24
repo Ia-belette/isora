@@ -18,8 +18,12 @@ const tables = [
       { name: "poster_url", type: "text" },
       { name: "backdrop_url", type: "text" },
       { name: "type", type: "text" },
+      { name: "recommendation_count", type: "int", defaultValue: "0" },
     ],
-    revLinks: [{ column: "content", table: "content_genres" }],
+    revLinks: [
+      { column: "content", table: "content_genres" },
+      { column: "movie", table: "daily_recommendations" },
+    ],
   },
   {
     name: "genres",
@@ -36,6 +40,13 @@ const tables = [
       { name: "genre", type: "link", link: { table: "genres" } },
     ],
   },
+  {
+    name: "daily_recommendations",
+    columns: [
+      { name: "date", type: "text" },
+      { name: "movie", type: "link", link: { table: "contents" } },
+    ],
+  },
 ] as const;
 
 export type SchemaTables = typeof tables;
@@ -50,10 +61,14 @@ export type GenresRecord = Genres & XataRecord;
 export type ContentGenres = InferredTypes["content_genres"];
 export type ContentGenresRecord = ContentGenres & XataRecord;
 
+export type DailyRecommendations = InferredTypes["daily_recommendations"];
+export type DailyRecommendationsRecord = DailyRecommendations & XataRecord;
+
 export type DatabaseSchema = {
   contents: ContentsRecord;
   genres: GenresRecord;
   content_genres: ContentGenresRecord;
+  daily_recommendations: DailyRecommendationsRecord;
 };
 
 const DatabaseClient = buildClient();

@@ -1,0 +1,33 @@
+{
+  "id": "mig_cuu8jv1dsuem1m1rjjng",
+  "parentID": "mig_cuu7s41dsuem1m1rjjeg",
+  "checksum": "1:6f483fe7be0eba56ee3188c308586bab439f28f1beaa4dd2dd85e710e59d270e",
+  "operations": [
+    {
+      "addTable": {
+        "table": "daily_recommendations"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "date",
+          "type": "text"
+        },
+        "table": "daily_recommendations"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "movie",
+          "type": "link",
+          "link": {
+            "table": "contents"
+          }
+        },
+        "table": "daily_recommendations"
+      }
+    }
+  ]
+}
