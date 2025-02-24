@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astro-community/astro-embed-youtube": "^0.5.6",
     "@astrojs/cloudflare": "^12.2.1",
     "@astrojs/preact": "^4.0.4",
     "@tailwindcss/vite": "^4.0.8",

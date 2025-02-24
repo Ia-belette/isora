@@ -3,4 +3,5 @@
 interface Env {
 	XATA_BRANCH: string;
 	XATA_API_KEY: string;
+	TMDB_API_KEY: string;
 }
