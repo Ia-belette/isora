@@ -31,7 +31,9 @@ const genres = await xata.db.genres.select(["id", "name"]).getAll();
     <Grid>
       {
         recentContents.records.map((m) => {
-          return <Card id={m.id} posterUrl={m.poster_url} title={m.title} />;
+          return (
+            <Card id={m.id} posterUrl={m?.poster_url!} title={m?.title!} />
+          );
         })
       }
     </Grid>
