@@ -1,8 +1,35 @@
 ---
+import Card from "../components/Card.astro";
+import Grid from "../components/Grid.astro";
 import Layout from "../layouts/Layout.astro";
+import { XataClient } from "../xata";
 const { env } = Astro.locals.runtime;
+
+export const prerender = false;
+
+const xata = new XataClient({
+  apiKey: env.XATA_API_KEY,
+  branch: env.XATA_BRANCH,
+});
+
+const recentContents = await xata.db.contents.getPaginated({
+  pagination: {
+    size: 20,
+  },
+  sort: {
+    "xata.createdAt": "desc",
+  },
+});
 ---
 
 <Layout>
-  <h1>Hello</h1>
+  <main class="container">
+    <Grid>
+      {
+        recentContents.records.map((m) => {
+          return <Card id={m.id} posterUrl={m.poster_url} title={m.title} />;
+        })
+      }
+    </Grid>
+  </main>
 </Layout>
