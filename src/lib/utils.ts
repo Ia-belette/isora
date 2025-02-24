@@ -30,13 +30,23 @@ export const transformProviders = (providers: ProvidersResult): Provider[] => {
     return Object.values(providersData);
 };
 
-export const getOfficialTrailer = (videos: any) => {
+interface Video {
+    type: string;
+    iso_639_1: string;
+    key: string;
+}
+
+interface VideosResponse {
+    results?: Video[];
+}
+
+export const getOfficialTrailer = (
+    videos: VideosResponse | null | undefined
+): string | null => {
     if (!videos?.results) return null;
     const trailer = videos.results.find(
-        (video: any) =>
-            video.type === "Trailer" &&
-
-            video.iso_639_1 === "en"
+        (video: Video) =>
+            video.type === "Trailer" && video.iso_639_1 === "en"
     );
 
     return trailer ? trailer.key : null;
