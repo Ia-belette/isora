@@ -18,7 +18,7 @@ const { id, posterUrl, title } = Astro.props;
           src={posterUrl || ""}
           class="rounded-xl object-cover w-full h-full aspect-[2/3] shadow-xl"
           alt={"Movie poster"}
-          loading="lazy"
+          loading="eager"
           inferSize
         />
       </div>
