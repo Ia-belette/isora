@@ -1,0 +1,46 @@
+---
+import Card from "../../components/Card.astro";
+import Genres from "../../components/Genres.astro";
+import Grid from "../../components/Grid.astro";
+import Layout from "../../layouts/Layout.astro";
+import { XataClient } from "../../xata";
+
+const { env } = Astro.locals.runtime;
+
+export const prerender = false;
+
+const xata = new XataClient({
+  apiKey: env.XATA_API_KEY,
+  branch: env.XATA_BRANCH,
+});
+
+const { slug } = Astro.params;
+
+const genre = await xata.db.genres.filter({ name: slug }).getFirst();
+
+if (!genre) {
+  return Astro.rewrite("/404");
+}
+
+const genres = await xata.db.genres.getAll();
+
+const contentGenres = await xata.db.content_genres
+  .select(["content.*"])
+  .filter({ genre: genre.id })
+  .getAll();
+
+const movies = contentGenres.map((record) => record.content);
+---
+
+<Layout>
+  <main class="container">
+    <Genres {genres} />
+    <Grid>
+      {
+        movies.map((m) => (
+          <Card id={m?.id!} posterUrl={m?.poster_url!} title={m?.title!} />
+        ))
+      }
+    </Grid>
+  </main>
+</Layout>
