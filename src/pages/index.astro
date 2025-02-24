@@ -1,4 +1,5 @@
 ---
+import BaseHead from "../components/BaseHead.astro";
 import Card from "../components/Card.astro";
 import Genres from "../components/Genres.astro";
 import Grid from "../components/Grid.astro";
@@ -26,6 +27,9 @@ const genres = await xata.db.genres.select(["id", "name"]).getAll();
 ---
 
 <Layout>
+  <head>
+    <BaseHead title={`Isora`} description={`Isora`} />
+  </head>
   <main class="container">
     <Genres {genres} />
     <Grid>
