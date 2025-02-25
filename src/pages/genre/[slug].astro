@@ -27,7 +27,8 @@ const genres = await xata.db.genres.getAll();
 
 const contentGenres = await xata.db.content_genres
   .select(["content.*"])
-  .filter({ genre: genre.id })
+  .filter("genre", genre.id)
+  .sort("content.xata.createdAt", "desc")
   .getAll();
 
 const movies = contentGenres.map((record) => record.content);
