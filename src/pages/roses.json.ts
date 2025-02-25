@@ -21,7 +21,6 @@ export const GET: APIRoute = async (context) => {
             .filter("id", dailyRecommendation.movie?.id)
             .select(["id", "title", "poster_url"])
             .getFirst();
-        console.log(movie)
         if (movie) {
             return new Response(JSON.stringify(movie));
         }
